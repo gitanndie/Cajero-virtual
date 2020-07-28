@@ -18,7 +18,8 @@ function iniciarSesion() {
         alert("Bienvenido/a " + nombreUsuario + " a tu Home Banking");
         document.body.style.display = "block";
         cargarNombreEnPantalla();
-        saldoEnPantalla();
+        actualizarSaldoEnPantalla();
+        actualizarLimiteEnPantalla();
     } else {
         saldoEnCuenta = 0;
         alert("Clave incorrecta. le quitamos toda su platica :(");
@@ -30,8 +31,32 @@ function cargarNombreEnPantalla() {
 }
 
 //actualizar saldo en pantalla
-function saldoEnPantalla() {
+function actualizarSaldoEnPantalla() {
     document.getElementById("saldo-cuenta").innerHTML = "$ " + saldoEnCuenta;
 }
+
+//Funcion flecha limite en pantalla --- =>
+const actualizarLimiteEnPantalla = () => {
+    document.getElementById("limite-extraccion").innerHTML =
+        "Tu límite de extracción es: $ " + limiteExtraccion;
+};
+
 //INVOCAR LA FUNCIÓN INICIAR SESIÓN
 iniciarSesion();
+
+//Acciones en la aplicacion
+//Cambiar limite de Extraccion
+
+
+function cambiarLimiteDeExtraccion() {
+    var nuevoLimite = parseInt(
+        prompt("Ingrese su nuevo límite de extracción"),
+        0
+    );
+    limiteExtraccion = nuevoLimite;
+    actualizarLimiteEnPantalla();
+    alert(
+        "Pum pum!! Se ha actualizado tu límite de extracción, nuevo valor " +
+        limiteExtraccion
+    );
+}
