@@ -44,10 +44,46 @@ const actualizarLimiteEnPantalla = () => {
 //INVOCAR LA FUNCIÓN INICIAR SESIÓN
 iniciarSesion();
 
+//Depositar Dinero
+function depositarDinero() {
+    var cantidad = parseInt(
+        prompt("ingresar la cantidad a depositar"), 0
+    );
+    if(isNaN(cantidad)) {
+        return alert("Ingrese solo numeros");
+    } else if (cantidad < 0) {
+        return alert ("ups te robo platica");
+    }
+    saldoEnCuenta += cantidad;
+    actualizarSaldoEnPantalla();
+    alert("su nuevo saldo es:" + saldoEnCuenta);
+}
+
+//Extraer Dinero
+function extraerDinero() {
+    var extraerDinero = parseInt(
+        prompt("Ingrese cuanto dinero quiere extraer"),
+        0
+    );
+
+    if (extraerDinero > saldoEnCuenta) {
+        alert("No puedes retirar ese valor")
+    } else if (extraerDinero > saldoEnCuenta) {
+        alert("No puede exceder el limite de extraccion")
+    } else if (extraerDinero < saldoEnCuenta) {
+        alert("Tu dinero ha sido retirado con exito")
+        saldoEnCuenta = saldoEnCuenta - extraerDinero;
+        actualizarLimiteEnPantalla();
+    } else {
+        alert("Error! digite un valor correcto");
+    }
+    actualizarSaldoEnPantalla();
+    alert("su nuevo saldo es:" + saldoEnCuenta);
+    
+}
+
 //Acciones en la aplicacion
 //Cambiar limite de Extraccion
-
-
 function cambiarLimiteDeExtraccion() {
     var nuevoLimite = parseInt(
         prompt("Ingrese su nuevo límite de extracción"),
