@@ -1,6 +1,6 @@
 console.log("Hello my banking app");
 // DECLARACIÓN DE VARIABLES
-let nombreUsuario = "John Flórez";
+let nombreUsuario = "Andrea González";
 let saldoEnCuenta = 5000;
 let limiteExtraccion = 500;
 let claveCorrecta = 1234;
@@ -38,7 +38,7 @@ function actualizarSaldoEnPantalla() {
 //función flecha limite en pantalla fuction --- =>
 const actualizarLimiteEnPantalla = () => {
     document.getElementById("limite-extraccion").innerHTML =
-        "Tu límite de estraccion es: $ " + limiteExtraccion;
+        "Tu límite de extracción es: $ " + limiteExtraccion;
 };
 
 //INVOCAR LA FUNCIÓN INICIAR SESIÓN
@@ -53,11 +53,11 @@ const pagarServicios = () => {
     let misServicios = ["Agua", "Telefono", "Luz", "Internet"];
 
     let servicio = prompt(`Ingrese el número que corresponda al servicio a pagar 
-  1. Agua - Valor ${agua}
-  2. Telefono - Valor ${telefono} 
-  3. Luz - Valor ${luz}
-  4. Internet - Valor ${internet}
-  `);
+    1. Agua - Valor ${agua}
+    2. Telefono - Valor ${telefono} 
+    3. Luz - Valor ${luz}
+    4. Internet - Valor ${internet}
+    `);
 
     switch (servicio) {
         case "1":
@@ -85,7 +85,7 @@ function depositarServicio(tipoDeServicio, nombreServicio) {
         `Has pagado ${tipoDeServicio} del servicio ${nombreServicio} y tu nuevo saldo es ${saldoEnCuenta}`
     );
 }
-switch (servicio){
+switch (servicio) {
     case "1":
         depositarServicio(agua, misServicios[0]);
         break;
@@ -145,11 +145,16 @@ function depositarDinero() {
 }
 
 function cambiarLimiteDeExtraccion() {
-    var nuevoLimite = parseInt(prompt("Ingrese su nuevo límite de estrasion"), 0);
+    var nuevoLimite = parseInt(prompt("Ingrese su nuevo límite de extracción"), 0);
     limiteExtraccion = nuevoLimite;
     actualizarLimiteEnPantalla();
-    alert(
-        "Pum pum!! Se ha actualizado tu límite de extracción, nuevo valor " +
-        limiteExtraccion
-    );
-}
+
+    if (nuevoLimite = saldoEnCuenta) {
+        alert("Error, la cuenta no puede quedar en 0");
+    } else if (nuevoLimite === 1000) {
+
+        alert("Pum pum!! Se ha actualizado tu límite de extracción, nuevo valor " +
+            limiteExtraccion
+        );
+    };
+};
