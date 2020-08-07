@@ -2,7 +2,7 @@ console.log("Hello my banking app");
 // DECLARACIÓN DE VARIABLES
 let nombreUsuario = "Andrea González";
 let saldoEnCuenta = 5000;
-let limiteExtraccion = 500;
+let limiteExtraccion = 100;
 let claveCorrecta = 1234;
 //console.log("clave correcta " + typeof claveCorrecta);
 // SE DEFINE LA FUNCIÓN PARA INICIAR SESIÓN
@@ -85,7 +85,7 @@ function depositarServicio(tipoDeServicio, nombreServicio) {
         `Has pagado ${tipoDeServicio} del servicio ${nombreServicio} y tu nuevo saldo es ${saldoEnCuenta}`
     );
 }
-switch (servicio) {
+/* switch (servicio) {
     case "1":
         depositarServicio(agua, misServicios[0]);
         break;
@@ -101,7 +101,7 @@ switch (servicio) {
     default:
         alert("No hay opción valida");
         break;
-};
+}; */
 
 function depositarServicio(tipoDeServicio, nombreServicio) {
     saldoEnCuenta -= tipoDeServicio;
@@ -124,6 +124,8 @@ function extraerDinero() {
     } else if (dineroAExtraer < saldoEnCuenta) {
         saldoEnCuenta = saldoEnCuenta - dineroAExtraer;
         alert("su saldo se actualizo");
+    } else if (dineroAExtraer != 1234567890) {
+        alert("ingrese solo numeros");
         actualizarSaldoEnPantalla();
     } else {
         alert("Error,Digite un valor correcto");
@@ -146,15 +148,18 @@ function depositarDinero() {
 
 function cambiarLimiteDeExtraccion() {
     var nuevoLimite = parseInt(prompt("Ingrese su nuevo límite de extracción"), 0);
+    /* let billete = parseInt(prompt("Solo digitos de 100"), 0);
+    var limiteExtraccion = parseInt(prompt("Tu límite actual ha cambiado"), 0);
+     */
     limiteExtraccion = nuevoLimite;
     actualizarLimiteEnPantalla();
 
     if (nuevoLimite = saldoEnCuenta) {
-        alert("Error, la cuenta no puede quedar en 0");
-    } else if (nuevoLimite === 1000) {
+        return alert("Error en tu cuenta");
+    } else if (nuevoLimite < 100) {
+        return alert("no se puede poner ese limite" + limiteExtraccion);
+    } else if (nuevoLimite != 100) {
+        return alert("Retire su plata" + limiteExtraccion);
+    }
 
-        alert("Pum pum!! Se ha actualizado tu límite de extracción, nuevo valor " +
-            limiteExtraccion
-        );
-    };
 };
