@@ -148,15 +148,22 @@ function depositarDinero() {
 
 function cambiarLimiteDeExtraccion() {
     var nuevoLimite = parseInt(prompt("Ingrese su nuevo límite de extracción"), 0);
-    
-    if (isNan(nuevoLimite)) {
-        return alert("Ingrese solo numeros porfavor");
+    if (isNaN(nuevoLimite)) {
+        return alert("Ingrese sólo numeros por favor");
     } else if (nuevoLimite < 0) {
-        return alert("no ingrese numeros negativos" + limiteExtraccion);
+        return alert("No ingrese numeros negativos");
+    } else if (nuevoLimite > 0) {
+        alert("Su límite se actualizo");
+        actualizarLimiteEnPantalla();
+    }else {
+        nuevoLimite = 0;
+        return alert("Ingrese un límite de extracción correcto");
     }
+
     limiteExtraccion = nuevoLimite;
     actualizarLimiteEnPantalla();
     alert(
         "Se ha actualizado el nuevo limite" + limiteExtraccion
     );
-}
+
+}   
