@@ -116,20 +116,18 @@ document.getElementById("servicios").addEventListener("click", pagarServicios);
 
 function extraerDinero() {
     let dineroAExtraer = parseInt(prompt("Digite el Valor a extraer"), 0);
-
-    if (dineroAExtraer > saldoEnCuenta) {
-        alert("Error, su saldo es insuficiente");
+    if (dineroAExtraer % 100 !== 0) {
+        return alert("Solo retire de a 100");
+    } else if (saldoEnCuenta >= 0 ) {
+        alert("No ingrese letras");
+    } else if (dineroAExtraer < saldoEnCuenta) {
+        saldoEnCuenta -= dineroAExtraer;
+        alert("Logró extraer su dinero");
+        actualizarSaldoEnPantalla();
+    
     } else if (dineroAExtraer > limiteExtraccion) {
         alert("No puede exceder el limite de extraccion");
-    } else if (dineroAExtraer < saldoEnCuenta) {
-        saldoEnCuenta = saldoEnCuenta - dineroAExtraer;
-        alert("su saldo se actualizo");
-    } else if (dineroAExtraer != 1234567890) {
-        alert("ingrese solo numeros");
-        actualizarSaldoEnPantalla();
-    } else {
-        alert("Error,Digite un valor correcto");
-    }
+    };
 }
 
 function depositarDinero() {
@@ -155,15 +153,13 @@ function cambiarLimiteDeExtraccion() {
     } else if (nuevoLimite > 0) {
         alert("Su límite se actualizo");
         actualizarLimiteEnPantalla();
-    }else {
+    } else {
         nuevoLimite = 0;
         return alert("Ingrese un límite de extracción correcto");
     }
-
     limiteExtraccion = nuevoLimite;
     actualizarLimiteEnPantalla();
     alert(
         "Se ha actualizado el nuevo limite" + limiteExtraccion
     );
-
-}   
+}
